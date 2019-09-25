@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
+            android:id="@+id/etphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="100dp"
+            android:digits="0123456789"
+            android:hint="Enter your phone no"
+            android:inputType="phone"
+            android:maxLength="10" />
+
+     <com.hbb20.CountryCodePicker
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/ccp"
+         app:ccp_defaultNameCode="India"
+         android:layout_toLeftOf="@+id/etphone"
+         android:layout_marginTop="100dp"/>
+
+
+        <Button
+            android:id="@+id/btnPhone"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etphone"
+            android:layout_centerHorizontal="true"
+            android:onClick="send_sms"
+            android:text="Send SMS" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,159 @@
+{
+  "project_info": {
+    "project_number": "835181019220",
+    "firebase_url": "https://loginaccount-2b515.firebaseio.com",
+    "project_id": "loginaccount-2b515",
+    "storage_bucket": "loginaccount-2b515.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835181019220:android:b19e3fb1884142c7",
+        "android_client_info": {
+          "package_name": "com.example.almas19.login_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835181019220-2ou9plqsip7l51e1lijkbgc1aj7sn2r5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.almas19.login_app",
+            "certificate_hash": "8f774e489e7a3c1171ca0d0e5e8720728649f3df"
+          }
+        },
+        {
+          "client_id": "835181019220-9d9n348ifkjdmr8t17ka4tk7rco33esd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxJbKeV8s7FsmHvqTgBcnPyORH-H2rD6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835181019220-9d9n348ifkjdmr8t17ka4tk7rco33esd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835181019220:android:e01a3688ac7576a3",
+        "android_client_info": {
+          "package_name": "com.example.jaanvi.dsc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835181019220-vkj3v0k4sf835aa1gc168lhcd8osgu1h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jaanvi.dsc",
+            "certificate_hash": "8f774e489e7a3c1171ca0d0e5e8720728649f3df"
+          }
+        },
+        {
+          "client_id": "835181019220-9d9n348ifkjdmr8t17ka4tk7rco33esd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxJbKeV8s7FsmHvqTgBcnPyORH-H2rD6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835181019220-9d9n348ifkjdmr8t17ka4tk7rco33esd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835181019220:android:13c3c6a65bcbec53",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835181019220-kkc1el5go5efp7gg38c5eut9rho03h7c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplication",
+            "certificate_hash": "820fabbefbd4a983c3c24a1aea2e67c5f3d630a5"
+          }
+        },
+        {
+          "client_id": "835181019220-9d9n348ifkjdmr8t17ka4tk7rco33esd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxJbKeV8s7FsmHvqTgBcnPyORH-H2rD6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835181019220-9d9n348ifkjdmr8t17ka4tk7rco33esd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835181019220:android:e7ae274a04d6a593",
+        "android_client_info": {
+          "package_name": "com.example.workwiz_dashboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835181019220-infcn80oevoi58f5kd5tnnfvlrspvmsn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.workwiz_dashboard",
+            "certificate_hash": "820fabbefbd4a983c3c24a1aea2e67c5f3d630a5"
+          }
+        },
+        {
+          "client_id": "835181019220-9d9n348ifkjdmr8t17ka4tk7rco33esd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxJbKeV8s7FsmHvqTgBcnPyORH-H2rD6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835181019220-9d9n348ifkjdmr8t17ka4tk7rco33esd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

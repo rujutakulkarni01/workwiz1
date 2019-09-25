@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Available"
+        android:id="@+id/cbAvailable"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Standby"
+        android:id="@+id/cbStandby"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/cbAvailable"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="        Busy"
+        android:id="@+id/cbBusy"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/cbStandby"/>
+
+</RelativeLayout>
