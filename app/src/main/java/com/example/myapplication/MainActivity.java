@@ -50,11 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ProgressBar progressBar;
     SharedPreferences sp;
 
-    public static final String COLLECTION_NAME_KEY = "Users";
-    public static final String NAME_KEY = "name";
-    public static final String PHONE_KEY = "phoneNO";
-    public static final String EMAIL_KEY = "email";
-    String usrName, usrEmail, usrPhoneNo;
+
 
 
     @Override

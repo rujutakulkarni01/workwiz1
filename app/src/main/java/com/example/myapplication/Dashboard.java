@@ -32,6 +32,8 @@ public class Dashboard extends AppCompatActivity
     FirebaseFirestore db;
     FirebaseUser user;
     FirebaseAuth mAuth;
+    DrawerLayout drawer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class Dashboard extends AppCompatActivity
         setContentView(R.layout.dashboard);
         Toolbar toolbar = findViewById(R.id.toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -50,28 +52,37 @@ public class Dashboard extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         View headerView = navigationView.getHeaderView(0);
-        final TextView name = headerView.findViewById(R.id.nav_name);
-        final TextView email = headerView.findViewById(R.id.nav_email);
-        DocumentReference docRef = db.collection(COLLECTION_NAME_KEY).document(user.getUid());
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    Users users = new Users();
-                    document.getData();
-                    users.setName((String) document.get("name"));
-                    users.setPhoneNo((String) document.get("phoneNo"));
-                    users.setEmail((String) document.get("email"));
 
-
-                    name.setText(users.getName());
-                    email.setText(users.getEmail());
-
-                }
-            }
-        });
     }
+
+        @Override
+        protected void onStart() {
+            super.onStart();
+
+            DocumentReference docRef = db.collection(COLLECTION_NAME_KEY).document(user.getUid());
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        Users users = new Users();
+                        document.getData();
+                        users.setName((String) document.get("name"));
+                        users.setPhoneNo((String) document.get("phoneNo"));
+                        users.setEmail((String) document.get("email"));
+
+                        final TextView name = findViewById(R.id.nav_name);
+                        final TextView email = findViewById(R.id.nav_email);
+                        name.setText(users.getName());
+                        email.setText(users.getEmail());
+
+                    }
+                }
+            });
+
+        }
+
+
 
     @Override
     public void onBackPressed() {
@@ -105,7 +116,6 @@ public class Dashboard extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -113,16 +123,22 @@ public class Dashboard extends AppCompatActivity
 
         if (id == R.id.nav_home){
 
+            Intent intent = new Intent(Dashboard.this, Dashboard.class);
+            startActivity(intent);
         }
         if (id == R.id.nav_profile) {
-            if (id == R.id.nav_profile){
                 Intent intent = new Intent(Dashboard.this, MyProfile.class);
                 startActivity(intent);
-            }
+        }
+        if (id == R.id.nav_feedback){
 
-
-            // Handle the camera action
-        } else if (id == R.id.activeJobs) {
+            Intent intent = new Intent(Dashboard.this, Feedback.class);
+            startActivity(intent);
+        }
+        if (id == R.id.nav_logout){
+           FirebaseAuth.getInstance().signOut();
+        }
+        /* else if (id == R.id.activeJobs) {
 
             Intent intent = new Intent(Dashboard.this, ActiveJobs.class);
             startActivity(intent);
@@ -141,7 +157,7 @@ public class Dashboard extends AppCompatActivity
             startActivity(intent);
 
 
-        }
+        }*/
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

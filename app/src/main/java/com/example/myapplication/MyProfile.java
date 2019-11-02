@@ -2,6 +2,8 @@ package com.example.myapplication;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,8 +12,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -48,7 +55,7 @@ import java.util.List;
 
 import static java.lang.Thread.sleep;
 
-public class MyProfile extends AppCompatActivity {
+public class MyProfile extends Dashboard{
 
     private static final int CHOOSE_IMAGE = 101;
     ImageView profile;
@@ -77,8 +84,9 @@ public class MyProfile extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.my_profile);
-
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View contentView = inflater.inflate(R.layout.my_profile,null,false);
+        drawer.addView(contentView,0);
         tvEmail = findViewById(R.id.tvEmail);
         tvPhone = findViewById(R.id.tvPhn);
         tvName = findViewById(R.id.tvName);
@@ -91,22 +99,24 @@ public class MyProfile extends AppCompatActivity {
         myDialog = new Dialog(this);
         addExperience = findViewById(R.id.addExperience);
         addSkills = findViewById(R.id.addSkills);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                executed = showImageChooser();
-                if (executed == true) {
 
-                    dialog();
-                }
-
+                showImageChooser();
 
             }
         });
 
-
+        loadUserInfo();
         addExperience.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,7 +146,6 @@ public class MyProfile extends AppCompatActivity {
         super.onStart();
 
 
-        CollectionReference collectionReference = db.collection(COLLECTION_NAME_KEY);
         DocumentReference docRef = db.collection(COLLECTION_NAME_KEY).document(user.getUid());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -162,7 +171,7 @@ public class MyProfile extends AppCompatActivity {
                 }
             }
         });
-        loadUserInfo();
+
         getExperienceForm();
         getSkills();
 
@@ -233,6 +242,10 @@ public class MyProfile extends AppCompatActivity {
 
         if (profileUri != null) {
 
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading");
+            progressDialog.show();
+
 
             profileImageRef.putFile(profileUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -241,11 +254,14 @@ public class MyProfile extends AppCompatActivity {
 
 
                             //   profileUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
+                            progressDialog.dismiss();
+                            Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
                             profileImageRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Uri> task) {
                                     profileUrl = task.getResult().toString();
                                     Log.i("URL", profileUrl);
+                                    saveUserInformation();
                                 }
                             });
 
@@ -266,18 +282,16 @@ public class MyProfile extends AppCompatActivity {
 
     }
 
-    private boolean showImageChooser() {
+    private void showImageChooser() {
 
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Profile Image"), CHOOSE_IMAGE);
-        executed = true;
-        return executed;
 
     }
 
-    private void dialog() {
+   /* private void dialog() {
 
 
         final AlertDialog.Builder builder
@@ -299,7 +313,7 @@ public class MyProfile extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
         dialog.show();
-    }
+    }*/
 
     private void getExperienceForm() {
 

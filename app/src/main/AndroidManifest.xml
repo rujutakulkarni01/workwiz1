@@ -23,6 +23,7 @@
         <activity android:name=".StarredJobs"></activity>
         <activity android:name=".ActiveJobs"></activity>
         <activity android:name=".StatusNotification"></activity>
+        <activity android:name=".Feedback"></activity>
 
 
         <activity

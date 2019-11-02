@@ -119,6 +119,43 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:835181019220:android:b2690d9426473e9f",
+        "android_client_info": {
+          "package_name": "com.example.smruti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835181019220-mva9ai84lmtn1e5cgiqsp1msbfpqn5i3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smruti",
+            "certificate_hash": "820fabbefbd4a983c3c24a1aea2e67c5f3d630a5"
+          }
+        },
+        {
+          "client_id": "835181019220-9d9n348ifkjdmr8t17ka4tk7rco33esd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxJbKeV8s7FsmHvqTgBcnPyORH-H2rD6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835181019220-9d9n348ifkjdmr8t17ka4tk7rco33esd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:835181019220:android:e7ae274a04d6a593",
         "android_client_info": {
           "package_name": "com.example.workwiz_dashboard"
