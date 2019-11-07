@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     FirebaseFirestore db;
     public static final  String COLLECTION_NAME_KEY = "Users";
     private FirebaseUser user;
+    Uri profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,7 +170,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 });
 
-      loadData();
+   //   loadData();
 
 
 
@@ -176,9 +178,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private void loadData()
     {
 
-
-
-        final CollectionReference collectionReference = db.collection(COLLECTION_NAME_KEY);
 
         final Users users = new Users();
         users.setName(etName.getText().toString());
@@ -201,7 +200,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
 
                     Toast.makeText(SignUpActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                    Intent intent =  new Intent(SignUpActivity.this, MyProfile.class);
+                    Intent intent =  new Intent(SignUpActivity.this, Dashboard.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();

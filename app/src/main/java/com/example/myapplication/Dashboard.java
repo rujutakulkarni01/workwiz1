@@ -1,8 +1,11 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
@@ -13,12 +16,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,7 +40,7 @@ public class Dashboard extends AppCompatActivity
     FirebaseUser user;
     FirebaseAuth mAuth;
     DrawerLayout drawer;
-
+    ImageView profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +59,7 @@ public class Dashboard extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         View headerView = navigationView.getHeaderView(0);
+        profile = headerView.findViewById(R.id.nav_profile);
 
     }
 
@@ -70,15 +78,26 @@ public class Dashboard extends AppCompatActivity
                         users.setName((String) document.get("name"));
                         users.setPhoneNo((String) document.get("phoneNo"));
                         users.setEmail((String) document.get("email"));
+                        users.setProfile((String) document.get("profile"));
 
                         final TextView name = findViewById(R.id.nav_name);
                         final TextView email = findViewById(R.id.nav_email);
                         name.setText(users.getName());
                         email.setText(users.getEmail());
-
                     }
+
                 }
             });
+
+
+            if (user.getPhotoUrl() != null) {
+                Glide.with(Dashboard.this)
+                        .load(user.getPhotoUrl())
+                        .centerCrop()
+                        .into(profile);
+            }
+
+
 
         }
 
@@ -118,25 +137,31 @@ public class Dashboard extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
         // Handle navigation view item clicks here.
+        Fragment fragment = null;
         int id = item.getItemId();
 
         if (id == R.id.nav_home){
-
-            Intent intent = new Intent(Dashboard.this, Dashboard.class);
-            startActivity(intent);
+               fragment = new FindJob();
         }
         if (id == R.id.nav_profile) {
-                Intent intent = new Intent(Dashboard.this, MyProfile.class);
-                startActivity(intent);
+                fragment = new MyProfile();
         }
         if (id == R.id.nav_feedback){
-
+/*
             Intent intent = new Intent(Dashboard.this, Feedback.class);
-            startActivity(intent);
+            startActivity(intent);*/
         }
         if (id == R.id.nav_logout){
            FirebaseAuth.getInstance().signOut();
+        }
+        if (fragment!=null)
+        {
+
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame,fragment);
+            ft.commit();
         }
         /* else if (id == R.id.activeJobs) {
 
@@ -158,6 +183,7 @@ public class Dashboard extends AppCompatActivity
 
 
         }*/
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

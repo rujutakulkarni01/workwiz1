@@ -1,15 +1,18 @@
 package com.example.myapplication;
 
-public class Users{
-    private String name,email,phoneNo,password,documentId;
+import android.net.Uri;
 
-    public Users(String name, String email, String phoneNo,String password,String documentId)
+public class Users{
+    private String name,email,phoneNo,documentId,profile;
+    public Users(String name, String email, String phoneNo, String documentId, String profile)
     {
 
         this.name = name;
         this.phoneNo = phoneNo;
         this.email = email;
         this.documentId = documentId;
+        this.profile = profile;
+
     }
 
     public Users(){
@@ -52,12 +55,14 @@ public class Users{
         this.email = email;
     }
 
-    public String getPassword(){
-        return password;
+    public String getProfile(){
+        return profile;
     }
 
-    public void setPassword(String password){
+    public void setProfile(String profile){
 
-        this.password = password;
+        this.profile = profile;
     }
+
+
 }
