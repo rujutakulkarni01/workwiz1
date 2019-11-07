@@ -143,7 +143,7 @@ public class Dashboard extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home){
-               fragment = new FindJob();
+            fragment = new FindJob();
         }
         if (id == R.id.nav_profile) {
                 fragment = new MyProfile();
