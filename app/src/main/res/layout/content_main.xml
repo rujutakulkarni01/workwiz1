@@ -9,6 +9,6 @@
     tools:showIn="@layout/app_bar_main"
     android:id="@+id/content_frame">
 
-    <include layout="@layout/find_jobs"/>
+
 </FrameLayout>
 

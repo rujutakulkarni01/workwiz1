@@ -143,15 +143,13 @@ public class Dashboard extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home){
-            fragment = new FindJob();
+         //   fragment = new FindJob();
         }
         if (id == R.id.nav_profile) {
                 fragment = new MyProfile();
         }
         if (id == R.id.nav_feedback){
-/*
-            Intent intent = new Intent(Dashboard.this, Feedback.class);
-            startActivity(intent);*/
+            fragment = new Feedback();
         }
         if (id == R.id.nav_logout){
            FirebaseAuth.getInstance().signOut();
