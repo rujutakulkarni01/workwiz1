@@ -17,7 +17,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -83,7 +82,7 @@ public class Skills extends AppCompatActivity {
 
 
                                     Toast.makeText(Skills.this, "Updated", Toast.LENGTH_SHORT).show();
-                                    Intent intent =  new Intent(Skills.this, MyProfile.class);
+                                    Intent intent =  new Intent(Skills.this, MyProfileFragment.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
                                     finish();

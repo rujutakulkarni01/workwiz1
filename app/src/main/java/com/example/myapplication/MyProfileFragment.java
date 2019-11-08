@@ -1,10 +1,7 @@
 package com.example.myapplication;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -12,12 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -60,7 +51,7 @@ import java.util.Map;
 import static android.app.Activity.RESULT_OK;
 import static java.lang.Thread.sleep;
 
-public class MyProfile extends Fragment {
+public class MyProfileFragment extends Fragment {
 
     private static final int CHOOSE_IMAGE = 101;
     ImageView profile;
@@ -89,9 +80,9 @@ public class MyProfile extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.my_profile,container,false);
+        View view = inflater.inflate(R.layout.fragment_profile,container,false);
     /*    LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View contentView = inflater.inflate(R.layout.my_profile,null,false);
+        View contentView = inflater.inflate(R.layout.fragment_profile,null,false);
         drawer.addView(contentView,0);*/
         tvEmail = view.findViewById(R.id.tvEmail);
         tvPhone = view.findViewById(R.id.tvPhn);
@@ -303,7 +294,7 @@ public class MyProfile extends Fragment {
 
 
         final AlertDialog.Builder builder
-                = new AlertDialog.Builder(MyProfile.this);
+                = new AlertDialog.Builder(MyProfileFragment.this);
         builder.setMessage("Are you sure you want to change the profile?");
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
@@ -371,7 +362,7 @@ public class MyProfile extends Fragment {
                             ExperienceAdapter experienceAdapter = new ExperienceAdapter(getActivity(), list);
                             listView.setAdapter(experienceAdapter);
                         } else {
-                            Log.d("MyProfile", "Error getting document", task.getException());
+                            Log.d("MyProfileFragment", "Error getting document", task.getException());
                         }
                     }
                 });

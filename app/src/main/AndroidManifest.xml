@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Dashboard"></activity>
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".MyProfile" />
+        <activity android:name=".MyProfileFragment" />
         <activity android:name=".Experience_form" />
         <activity android:name=".Skills" />
         <activity android:name=".StarredJobs" />

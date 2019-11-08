@@ -84,7 +84,7 @@ public class Experience_form extends AppCompatActivity {
 
 
                        Toast.makeText(Experience_form.this, "Updated", Toast.LENGTH_SHORT).show();
-                       Intent intent =  new Intent(Experience_form.this, MyProfile.class);
+                       Intent intent =  new Intent(Experience_form.this, MyProfileFragment.class);
                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                        startActivity(intent);
                        finish();
